@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "/home/lium/.dotnet/store/|arch|/|tfm|",
+      "/home/lium/.nuget/packages"
+    ]
+  }
+}

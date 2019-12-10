@@ -1,0 +1,14 @@
+/home/lium/Dev/Dotnet/BisHub/bin/Debug/netcoreapp2.2/BisHub.deps.json
+/home/lium/Dev/Dotnet/BisHub/bin/Debug/netcoreapp2.2/BisHub.runtimeconfig.json
+/home/lium/Dev/Dotnet/BisHub/bin/Debug/netcoreapp2.2/BisHub.runtimeconfig.dev.json
+/home/lium/Dev/Dotnet/BisHub/bin/Debug/netcoreapp2.2/BisHub.dll
+/home/lium/Dev/Dotnet/BisHub/bin/Debug/netcoreapp2.2/BisHub.pdb
+/home/lium/Dev/Dotnet/BisHub/obj/Debug/netcoreapp2.2/BisHub.csprojAssemblyReference.cache
+/home/lium/Dev/Dotnet/BisHub/obj/Debug/netcoreapp2.2/BisHub.csproj.CoreCompileInputs.cache
+/home/lium/Dev/Dotnet/BisHub/obj/Debug/netcoreapp2.2/BisHub.RazorAssemblyInfo.cache
+/home/lium/Dev/Dotnet/BisHub/obj/Debug/netcoreapp2.2/BisHub.RazorAssemblyInfo.cs
+/home/lium/Dev/Dotnet/BisHub/obj/Debug/netcoreapp2.2/BisHub.AssemblyInfoInputs.cache
+/home/lium/Dev/Dotnet/BisHub/obj/Debug/netcoreapp2.2/BisHub.AssemblyInfo.cs
+/home/lium/Dev/Dotnet/BisHub/obj/Debug/netcoreapp2.2/BisHub.RazorTargetAssemblyInfo.cache
+/home/lium/Dev/Dotnet/BisHub/obj/Debug/netcoreapp2.2/BisHub.dll
+/home/lium/Dev/Dotnet/BisHub/obj/Debug/netcoreapp2.2/BisHub.pdb

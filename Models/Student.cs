@@ -32,7 +32,18 @@ namespace BisHub.Models
 
         public Student GetStudentById(int id)
         {
-            return db.Connection().SingleSql<Student>("SELECT * FROM `student` WHERE id=" + id);
+            Student student = db.Connection().SingleSql<Student>("SELECT * FROM `student` WHERE id=" + id);
+            if (student != null)
+            {
+                student.instructors = db.Connection().QuerySql<int>("SELECT `instructor_id` FROM `instructor_has_student` WHERE `student_id` = " + id);
+            }
+            return student;
+        }
+
+        public Student AddInstructor(int id, int iid)
+        {
+            db.Connection().ExecuteSql(string.Format("INSERT INTO `instructor_has_student` (`student_id`, `instructor_id`) VALUES ({0}, {1})", id, iid));
+            return GetStudentById(id);
         }
     }
 
@@ -51,7 +62,7 @@ namespace BisHub.Models
         public string status { get; set; }
         public double gpa { get; set; }
         public int level { get; set; }
-        public IList<Instructor> instructors { get; set; }
+        public IList<int> instructors { get; set; }
 
     }
 

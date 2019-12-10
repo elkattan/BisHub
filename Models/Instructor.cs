@@ -33,30 +33,30 @@ namespace BisHub.Models
 
         public Instructor GetInstructorById(int id)
         {
-            return db.Connection().SingleSql<Instructor>("SELECT * FROM `instructor` WHERE id=" + id);
+            Instructor instructor = db.Connection().SingleSql<Instructor>("SELECT * FROM `instructor` WHERE `id` = " + id);
+            if (instructor != null)
+            {
+                instructor.students = db.Connection().QuerySql<int>("SELECT `student_id` FROM `instructor_has_student` WHERE `instructor_id` = " + id);
+            }
+            return instructor;
+        }
+
+        public Instructor AddStudent(int id, int sid)
+        {
+            db.Connection().SingleSql<Instructor>(string.Format("INSERT INTO `instructor_has_student` (`instructor_id`, `student_id`) VALUES ({0}, {1})", id, sid));
+            return GetInstructorById(id);
         }
     }
 
     public class Instructor
     {
-        public Instructor(string name, string email)
-        {
-            this.name = name;
-            this.email = email;
-            this.birth_date = birth_date;
-            this.graduation_date = graduation_date;
-            this.subject = subject;
-            this.bio = bio;
-        }
-
         public int id { get; set; }
         public string name { get; set; }
-        public string email { get; set; }
         public DateTime birth_date { get; set; }
         public DateTime graduation_date { get; set; }
         public string subject { get; set; }
         public string bio { get; set; }
-        public IList<Student> students { get; set; }
+        public IList<int> students { get; set; }
     }
 
 }

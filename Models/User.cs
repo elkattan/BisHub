@@ -14,9 +14,7 @@ namespace BisHub.Models
     }
     public class UserRepository
     {
-
         private MySqlConnectionStringBuilder db = new MySqlConnectionStringBuilder(Environment.GetEnvironmentVariable("MYSQL_URL"));
-
 
         public User InsertUser(User user)
         {
@@ -69,7 +67,17 @@ namespace BisHub.Models
 
         public User GetUserById(int id)
         {
-            return db.Connection().SingleSql<User>("SELECT * FROM `user` WHERE id=" + id);
+            return db.Connection().SingleSql<User>("SELECT * FROM `user` WHERE `id` = " + id);
+        }
+
+        public User GetUserByField(string field, string value)
+        {
+            return db.Connection().SingleSql<User>(string.Format("SELECT * FROM `user` WHERE `{0}` = '{1}'", field, value));
+        }
+
+        public User GetUserByUsername(string username)
+        {
+            return db.Connection().SingleSql<User>(string.Format("SELECT * FROM `user` WHERE `username` = '{0}'", username));
         }
     }
 
@@ -128,6 +136,15 @@ namespace BisHub.Models
         public string getEncryptedPassword()
         {
             return Crypto.Encrypt(_password);
+        }
+
+        public bool isPasswordOkay()
+        {
+            if (_password != null && _password.Length >= 6)
+            {
+                return true;
+            }
+            return false;
         }
 
         public bool isPasswordValid(string pass)

@@ -13178,6 +13178,7 @@
       "Insight.Database >= 6.2.11",
       "Insight.Database.Providers.MySQL >= 6.2.11",
       "Microsoft.AspNetCore.App >= 2.2.6",
+      "Microsoft.AspNetCore.Cors >= 2.2.0",
       "Microsoft.AspNetCore.Razor.Design >= 2.2.0",
       "Microsoft.NETCore.App >= 2.2.0",
       "MySql.Data >= 8.0.18"
@@ -13231,6 +13232,10 @@
             "target": "Package",
             "version": "[2.2.6, )",
             "autoReferenced": true
+          },
+          "Microsoft.AspNetCore.Cors": {
+            "target": "Package",
+            "version": "[2.2.0, )"
           },
           "Microsoft.AspNetCore.Razor.Design": {
             "suppressParent": "All",

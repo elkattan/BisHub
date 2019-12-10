@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 using Insight.Database;
 using BisHub.Libs;
+using BisHub.Entities;
 
 namespace BisHub.Models
 {
@@ -45,14 +46,25 @@ namespace BisHub.Models
             );
             // Converting New ID to the user Int ID
             user.id = Convert.ToInt32(res[0]);
-            // Nullefing password
-            user.password = null;
             return user;
         }
 
         public IList<User> GetUsers()
         {
             return db.Connection().QuerySql<User>("SELECT * FROM `user`");
+        }
+
+        public User getUserByEmailOrUsername(string usernameOrEmail)
+        {
+            IList<User> res = db.Connection().QuerySql<User>(string.Format("SELECT * FROM `user` WHERE `username` = '{0}' OR `email` = '{0}'", usernameOrEmail));
+            if (res.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return res[0];
+            }
         }
 
         public User GetUserById(int id)
@@ -66,6 +78,7 @@ namespace BisHub.Models
         public int id { get; set; }
         public string username { get; set; }
         public string email { get; set; }
+        public string accessToken { get; set; }
         private string _password { get; set; }
         public string password
         {
@@ -108,6 +121,10 @@ namespace BisHub.Models
             }
         }
 
+        // Default to USER
+        public string role = Role.User;
+
+
         public string getEncryptedPassword()
         {
             return Crypto.Encrypt(_password);
@@ -115,8 +132,8 @@ namespace BisHub.Models
 
         public bool isPasswordValid(string pass)
         {
-            string decrypted = Crypto.Decrypt(pass);
-            if (_password == decrypted) return true;
+            string decrypted = Crypto.Decrypt(_password);
+            if (pass == decrypted) return true;
             return false;
         }
 

@@ -20,29 +20,6 @@ namespace BisHub.Libs
             public const Int32 bytePermutation4 = 0x41;
         }
 
-
-        // The console window
-        // public static void Main(String[] args)
-        // {
-
-        //     Console.Title = "Secure Password v2";
-        //     Console.WriteLine("Output---");
-        //     Console.WriteLine("");
-
-        //     Console.WriteLine("Password:  " + Global.strPassword);
-
-        //     string strEncrypted = (Encrypt(Global.strPassword));
-        //     Console.WriteLine("Encrypted: " + strEncrypted);
-
-        //     string strDecrypted = (Decrypt(strEncrypted));
-        //     Console.WriteLine("Decrypted: " + strDecrypted);
-
-        //     Console.ReadKey();
-        // }
-
-
-
-
         // encoding
         public static string Encrypt(string strData)
         {
@@ -56,9 +33,8 @@ namespace BisHub.Libs
         // decoding
         public static string Decrypt(string strData)
         {
-            return Encoding.UTF8.GetString(Decrypt(Convert.FromBase64String(strData)));
+            return Encoding.UTF8.GetString(Decrypt(Convert.FromBase64String(strData + "")));
             // reference https://msdn.microsoft.com/en-us/library/system.convert.frombase64string(v=vs.110).aspx
-
         }
 
         // encrypt

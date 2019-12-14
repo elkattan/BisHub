@@ -38,11 +38,18 @@ namespace BisHub.Controllers
             return Ok(repo.GetStudentById(id));
         }
 
-        // POST api/students/{ID}/add/{SID}
+        // POST api/students/{ID}/add/{IID}
         [HttpPost("{id}/add/{iid}")]
         public ActionResult Post(int id, int iid)
         {
             return Ok(repo.AddInstructor(id, iid));
+        }
+
+        // DELETE api/students/{ID}/add/{IID}
+        [HttpDelete("{id}/add/{iid}")]
+        public ActionResult Delete(int id, int iid)
+        {
+            return Ok(repo.RemoveInstructor(id, iid));
         }
     }
 }

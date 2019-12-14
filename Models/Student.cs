@@ -45,6 +45,12 @@ namespace BisHub.Models
             db.Connection().ExecuteSql(string.Format("INSERT INTO `instructor_has_student` (`student_id`, `instructor_id`) VALUES ({0}, {1})", id, iid));
             return GetStudentById(id);
         }
+
+        public Student RemoveInstructor(int id, int iid)
+        {
+            db.Connection().ExecuteSql(string.Format("DELETE FROM `instructor_has_student` WHERE `student_id` = {0} AND `instructor_id` = {1}", id, iid));
+            return GetStudentById(id);
+        }
     }
 
     public class Student

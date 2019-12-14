@@ -43,7 +43,7 @@ namespace BisHub.Controllers
             return Ok(user);
         }
 
-        // POST api/users
+        // POST api/users/register
         [AllowAnonymous]
         [HttpPost("register")]
         public ActionResult Register([FromBody] User user)
